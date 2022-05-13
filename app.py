@@ -17,7 +17,9 @@ def index():
             -31.61492,
             -64.74913
         ],
-        tiles="OpenStreetMap",
+        tiles='https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+        # Change tiles to "opentopomap" and remove attr parameter for regular map (OpenStreet).
+        attr='some',  # Remove this for regular map using "opentopomap" on tiles.
         zoom_start=15,
     )
     folium.GeoJson(geo_data, name="geojson").add_to(folium_map)
