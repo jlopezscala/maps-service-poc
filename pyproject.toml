@@ -8,6 +8,9 @@ authors = ["Julian Scala <julianlopezscala@gmail.com>"]
 python = "^3.9.9"
 Flask = "^2.1.2"
 folium = "0.12.1.post1"
+SQLAlchemy = "1.4.36"
+alembic = "1.7.7"
+psycopg2-binary = "2.9.3"
 
 [tool.poetry.dev-dependencies]
 
