@@ -22,6 +22,8 @@ def upgrade():
         sa.Column('id', postgresql.UUID(as_uuid=True), primary_key=True),
         sa.Column('name', sa.String(50), nullable=False),
         sa.Column('description', sa.Unicode(200)),
+        sa.Column('created_at', sa.DateTime(), nullable=False, server_default=sa.func.current_timestamp()),
+        sa.Column('updated_at', sa.DateTime(), nullable=False, server_default=sa.func.current_timestamp())
     )
 
 
