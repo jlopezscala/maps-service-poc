@@ -9,6 +9,6 @@ Requirements:
 - Python 3.9
 - Pyenv https://github.com/pyenv/pyenv (Optional) 
 
-1. Run `poetry env use {path_to_python3.9}`. If using `pyenv`, set local or global Python to 3.9.9 
-2. Run `poetry update`
-3. Run `flask run`
+1. Run `make init` 
+2. Run `make up`
+`
