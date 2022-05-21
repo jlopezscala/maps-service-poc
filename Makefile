@@ -8,7 +8,6 @@ clean-pyc \
 clean-test \
 test \
 coverage \
-print \
 postgres-down \
 postgres-up \
 service-run \
@@ -19,7 +18,6 @@ down \
 
 # Tests
 TARGET ?= tests
-REMOTE_DOMAIN = ""
 
 
 ############################################################################
@@ -46,8 +44,6 @@ help:
 	@echo "        Run pytest. Must prefix with POSTGRES_PORT=12733"
 	@echo "    coverage"
 	@echo "        Generate coverage report."
-	@echo "    print"
-	@echo "        Show the complete yaml of a particular deploy."
 	@echo "    postgres-up"
 	@echo "        Start a local postgres."
 	@echo "    postgres-down"
