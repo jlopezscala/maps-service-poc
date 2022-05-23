@@ -9,7 +9,7 @@ from src.domain.model import Project, Polygon
 from src.service.unit_of_work import SqlAlchemyUnitOfWork
 
 app = Flask(__name__)
-geo_filename = os.path.join(app.static_folder, 'data', 'geo_map.json')
+geo_filename = os.path.join(app.static_folder, "data", "geo_map.json")
 orm.start_mappers()
 
 
@@ -20,9 +20,11 @@ def create_project():
 
     project = Project(name="aProject", description="aDescription")
 
-    polygon_data = geo_data['features'][0]['geometry']['coordinates'][0]
+    polygon_data = geo_data["features"][0]["geometry"]["coordinates"][0]
     # 'POLYGON((0 0,1 0,1 1,0 1,0 0))' formatting. Might not be needed if using PostGIS functions.
-    polygon_repr = "POLYGON(({}))".format(','.join([' '.join(map(str, point)) for point in polygon_data]))
+    polygon_repr = "POLYGON(({}))".format(
+        ",".join([" ".join(map(str, point)) for point in polygon_data])
+    )
     polygon = Polygon(name="aName", geom=polygon_repr)
     project.add_feature(polygon)
     with SqlAlchemyUnitOfWork() as uow:
@@ -39,5 +41,5 @@ def get_project(project_id):
         return str(uow.projects.get(project_id))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()

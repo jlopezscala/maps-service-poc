@@ -34,10 +34,17 @@ polygons = Table(
 
 
 def start_mappers():
-    polygon_mapper = mapper(model.Polygon, polygons,
-                            properties={"geom_json": column_property(functions.ST_AsGeoJSON(polygons.c.geom))})
-    mapper(model.Project,
-           projects,
-           properties={"features": relationship(
-               polygon_mapper,
-               cascade="all")})
+    polygon_mapper = mapper(
+        model.Polygon,
+        polygons,
+        properties={
+            "geom_json": column_property(
+                functions.ST_AsGeoJSON(polygons.c.geom)
+            )
+        },
+    )
+    mapper(
+        model.Project,
+        projects,
+        properties={"features": relationship(polygon_mapper, cascade="all")},
+    )
