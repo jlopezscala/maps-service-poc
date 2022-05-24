@@ -1,5 +1,3 @@
-
-
 class Polygon:
     def __init__(self, name: str, geom: list):
         self.name = name

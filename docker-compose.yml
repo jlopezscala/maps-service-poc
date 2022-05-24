@@ -1,4 +1,7 @@
 services:
+  app:
+    image: python:3.8-slim-buster
+
   db:
     image: postgis/postgis:14-3.2-alpine
     restart: always
