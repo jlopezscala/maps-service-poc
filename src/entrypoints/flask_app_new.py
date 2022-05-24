@@ -1,14 +1,14 @@
+import json
+import os
 from http import HTTPStatus
 
 from flask import Flask
-import json
-import os
 
 from src.adapters import orm
-from src.domain.model import Project, Polygon
+from src.domain.model import Polygon, Project
 from src.service.unit_of_work import SqlAlchemyUnitOfWork
 
-app = Flask(__name__)
+app = Flask(__name__, instance_relative_config=True)
 geo_filename = os.path.join(app.static_folder, "data", "geo_map.json")
 orm.start_mappers()
 
@@ -39,7 +39,3 @@ def create_project():
 def get_project(project_id):
     with SqlAlchemyUnitOfWork() as uow:
         return str(uow.projects.get(project_id))
-
-
-if __name__ == "__main__":
-    app.run()
